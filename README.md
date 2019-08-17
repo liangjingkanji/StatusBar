@@ -13,6 +13,12 @@
 
 
 
+### 依赖
+
+```groovy
+implementation 'com.github.liangjingkanji:StatusBar:1.0'
+```
+
 
 
 Demo非常简单推荐康康
@@ -101,4 +107,5 @@ fun Context.getNavigationBarHeight(): Int
 fun Context.getStatusBarHeight(): Int
 // 状态栏高度
 ```
+
 
