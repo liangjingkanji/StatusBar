@@ -12,16 +12,28 @@
 2. 透明状态栏(暗色模式)
 
 
-
 ### 依赖
 
+project 的 build.gradle
+
 ```groovy
-implementation 'com.github.liangjingkanji:StatusBar:1.0'
+allprojects {
+    repositories {
+        // ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 
 
-Demo非常简单推荐康康
+module 的 build.gradle
+
+```
+implementation 'com.github.liangjingkanji:StatusBar:1.0'
+```
+
+
 
 ## 示例
 
