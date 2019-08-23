@@ -1,4 +1,4 @@
-package com.drake.library;
+package com.drake.statusbar;
 
 import org.junit.Test;
 

@@ -4,7 +4,7 @@
  * Author：两津勘吉
  */
 
-package com.drake.library
+package com.drake.statusbar
 
 import android.annotation.SuppressLint
 import android.app.Activity
