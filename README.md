@@ -30,7 +30,7 @@ allprojects {
 module 的 build.gradle
 
 ```
-implementation 'com.github.liangjingkanji:StatusBar:1.0.1'
+implementation 'com.github.liangjingkanji:StatusBar:1.0.2'
 ```
 
 
