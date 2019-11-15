@@ -10,6 +10,7 @@
 
 1. 透明状态栏
 2. 透明状态栏(暗色模式)
+3. 设置状态栏颜色
 
 
 ### 依赖
@@ -30,7 +31,7 @@ allprojects {
 module 的 build.gradle
 
 ```
-implementation 'com.github.liangjingkanji:StatusBar:1.0.2'
+implementation 'com.github.liangjingkanji:StatusBar:1.0.3'
 ```
 
 
@@ -79,6 +80,27 @@ fun Activity.immersiveDark(
     darkMode: Boolean = true,
     color: Int = DEFAULT_COLOR,
     alpha: Float = DEFAULT_ALPHA
+)
+```
+
+
+
+透明状态栏函数都会导致状态栏遮挡住界面, 设置view参数可以避免view被状态栏遮挡.
+
+
+
+仅仅设置状态栏颜色
+
+-   不会导致状态栏遮挡界面
+-   同时默认颜色为不透明
+
+```kotlin
+fun Activity.setStatusBarColor(
+    color: Int,
+    @FloatRange(
+        from = 0.0,
+        to = 1.0
+    ) alpha: Float = DEFAULT_ALPHA
 )
 ```
 

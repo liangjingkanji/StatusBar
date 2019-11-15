@@ -19,6 +19,8 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.widget.RelativeLayout
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.FloatRange
 import androidx.annotation.RequiresApi
 import java.util.regex.Pattern
@@ -32,23 +34,26 @@ private const val DEFAULT_ALPHA = 0f
 
 // <editor-fold desc="透明状态栏">
 
+
 /**
- * 设置状态栏透明
+ * 设置状态栏颜色, 会导致状态栏覆盖界面
+ *
  * @receiver Activity
- * @param color Int 状态栏颜色
+ * @param color Int 状态栏颜色, 默认透明颜色.
  * @param alpha Float 状态栏透明度
- * @param view 设置StatusPaddingTop
+ * @param view 会给指定的视图对象设置一个paddingTop来避免被状态栏遮挡
  */
 @SuppressLint("ObsoleteSdkInt")
 @JvmOverloads
 fun Activity.immersive(
     view: View? = null,
-    color: Int = DEFAULT_COLOR,
+    @ColorInt color: Int = DEFAULT_COLOR,
     @FloatRange(
         from = 0.0,
         to = 1.0
     ) alpha: Float = DEFAULT_ALPHA
 ) {
+
     when {
         Build.VERSION.SDK_INT >= 21 -> {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -74,19 +79,63 @@ fun Activity.immersive(
 }
 
 /**
+ * 设置状态栏颜色, 不会造成状态栏遮挡界面
+ *
+ * @receiver Activity
+ * @param color Int 颜色
+ * @param alpha Float 透明度
+ */
+fun Activity.setStatusBarColor(
+    @ColorInt color: Int,
+    @FloatRange(
+        from = 0.0,
+        to = 1.0
+    ) alpha: Float = 1F
+) {
+    when {
+        Build.VERSION.SDK_INT >= 21 -> {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = mixtureColor(color, alpha)
+        }
+        Build.VERSION.SDK_INT >= MIN_API -> {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            val content = window.findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
+            content.fitsSystemWindows = true
+            setTranslucentView(window.decorView as ViewGroup, color, alpha)
+        }
+    }
+}
+
+fun Activity.setStatusBarColorRes(
+    @ColorRes colorRes: Int,
+    @FloatRange(
+        from = 0.0,
+        to = 1.0
+    ) alpha: Float = 1F
+) {
+    val color = resources.getColor(colorRes)
+    setStatusBarColor(color, alpha)
+}
+
+
+/**
  * 设置状态栏暗色模式并且透明(如果是Android6以下状态栏默认为灰色)
  *
  * @receiver Activity
  * @param darkMode Boolean 是否开启暗色模式
- * @param color Int 状态栏颜色
+ * @param color Int 状态栏颜色, 默认透明颜色
  * @param alpha Int 颜色透明度
- * @param view 设置StatusPaddingTop
+ * @param view 会给指定的视图对象设置一个paddingTop来避免被状态栏遮挡
  */
 fun Activity.immersiveDark(
     view: View? = null,
     darkMode: Boolean = true,
-    color: Int = DEFAULT_COLOR,
-    alpha: Float = DEFAULT_ALPHA
+    @ColorInt color: Int = DEFAULT_COLOR,
+    @FloatRange(
+        from = 0.0,
+        to = 1.0
+    ) alpha: Float = DEFAULT_ALPHA
 ) {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -100,7 +149,7 @@ fun Activity.immersiveDark(
         immersive(color = color, alpha = alpha)
     } else {
         if (darkMode) {
-            immersive(color = Color.LTGRAY, alpha = 1f)
+            immersive(color = Color.LTGRAY)
         } else {
             immersive(color = color, alpha = alpha)
         }
@@ -342,6 +391,7 @@ fun Context.getNavigationBarHeight(): Int {
         0
     }
 }
+
 
 /**
  * 状态栏高度
