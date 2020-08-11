@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2018 Drake, Inc.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,4 +14,17 @@
   ~ limitations under the License.
   -->
 
-<manifest package="com.drake.statusbar" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainActivity"
+        android:title="ToolBar" />
+    <item
+        android:id="@+id/darkStatusBarActivity"
+        android:title="暗色状态栏" />
+    <item
+        android:id="@+id/immersiveDrawerActivity"
+        android:title="抽屉状态栏" />
+    <item
+        android:id="@+id/immersiveImageActivity"
+        android:title="图片状态栏" />
+</menu>

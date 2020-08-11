@@ -17,18 +17,20 @@
 package com.drake.statusbar.sample
 
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.drake.statusbar.immersive
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_immersive_drawer.*
 
-class MainActivity : BaseMenuActivity() {
-
+class ImmersiveDrawerActivity : BaseMenuActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_immersive_drawer)
+
+        val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.open_drawer, R.string.close_drawer)
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+        immersive(toolbar)
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
-        immersive(toolbar)
-        // or dark status bar
-        // immersiveDark(toolbar)
     }
 }

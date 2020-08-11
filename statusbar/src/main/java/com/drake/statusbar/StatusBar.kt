@@ -1,7 +1,17 @@
 /*
- * Copyright (C) 2018, Umbrella CompanyLimited All rights reserved.
- * Project：StatusBar
- * Author：两津勘吉
+ * Copyright (C) 2018 Drake, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.drake.statusbar
@@ -11,6 +21,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
@@ -23,6 +34,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.FloatRange
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import java.util.regex.Pattern
 
 /**
@@ -48,10 +60,7 @@ private const val DEFAULT_ALPHA = 0f
 fun Activity.immersive(
     view: View? = null,
     @ColorInt color: Int = DEFAULT_COLOR,
-    @FloatRange(
-        from = 0.0,
-        to = 1.0
-    ) alpha: Float = DEFAULT_ALPHA
+    @FloatRange(from = 0.0, to = 1.0) alpha: Float = DEFAULT_ALPHA
 ) {
 
     when {
@@ -79,47 +88,6 @@ fun Activity.immersive(
 }
 
 /**
- * 设置状态栏颜色, 不会造成状态栏遮挡界面
- *
- * @receiver Activity
- * @param color Int 颜色
- * @param alpha Float 透明度
- */
-fun Activity.setStatusBarColor(
-    @ColorInt color: Int,
-    @FloatRange(
-        from = 0.0,
-        to = 1.0
-    ) alpha: Float = 1F
-) {
-    when {
-        Build.VERSION.SDK_INT >= 21 -> {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = mixtureColor(color, alpha)
-        }
-        Build.VERSION.SDK_INT >= MIN_API -> {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            val content = window.findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
-            content.fitsSystemWindows = true
-            setTranslucentView(window.decorView as ViewGroup, color, alpha)
-        }
-    }
-}
-
-fun Activity.setStatusBarColorRes(
-    @ColorRes colorRes: Int,
-    @FloatRange(
-        from = 0.0,
-        to = 1.0
-    ) alpha: Float = 1F
-) {
-    val color = resources.getColor(colorRes)
-    setStatusBarColor(color, alpha)
-}
-
-
-/**
  * 设置状态栏暗色模式并且透明(如果是Android6以下状态栏默认为灰色)
  *
  * @receiver Activity
@@ -132,10 +100,7 @@ fun Activity.immersiveDark(
     view: View? = null,
     darkMode: Boolean = true,
     @ColorInt color: Int = DEFAULT_COLOR,
-    @FloatRange(
-        from = 0.0,
-        to = 1.0
-    ) alpha: Float = DEFAULT_ALPHA
+    @FloatRange(from = 0.0, to = 1.0) alpha: Float = DEFAULT_ALPHA
 ) {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -156,6 +121,45 @@ fun Activity.immersiveDark(
     }
 
     view?.statusPadding()
+}
+
+/**
+ * 设置状态栏颜色, 不会造成状态栏遮挡界面
+ *
+ * @receiver Activity
+ * @param color Int 颜色
+ * @param alpha Float 透明度
+ */
+fun Activity.setStatusBarColor(
+    @ColorInt color: Int,
+    darkMode: Boolean? = null,
+    @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1F
+) {
+    when {
+        Build.VERSION.SDK_INT >= 21 -> {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = mixtureColor(color, alpha)
+        }
+        Build.VERSION.SDK_INT >= MIN_API -> {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            val content = window.findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
+            content.fitsSystemWindows = true
+            setTranslucentView(window.decorView as ViewGroup, color, alpha)
+        }
+    }
+    if (darkMode != null) {
+        darkMode(darkMode)
+    }
+}
+
+fun Activity.setStatusBarColorRes(
+    @ColorRes colorRes: Int,
+    darkMode: Boolean? = null,
+    @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1F
+) {
+    val color = resources.getColor(colorRes)
+    setStatusBarColor(color, darkMode, alpha = alpha)
 }
 
 // </editor-fold>
@@ -268,7 +272,7 @@ fun View.statusPadding() {
     if (Build.VERSION.SDK_INT >= MIN_API) {
         val lp = layoutParams
         if (lp != null && lp.height > 0) {
-            lp.height += context.getStatusBarHeight()//增高
+            lp.height += context.getStatusBarHeight() //增高
         }
         setPadding(
             paddingLeft, paddingTop + context.getStatusBarHeight(),
@@ -296,7 +300,7 @@ fun View.statusMargin() {
     if (Build.VERSION.SDK_INT >= MIN_API) {
         val lp = layoutParams
         if (lp is ViewGroup.MarginLayoutParams) {
-            lp.topMargin += context.getStatusBarHeight()//增高
+            lp.topMargin += context.getStatusBarHeight() //增高
         }
         layoutParams = lp
     }
@@ -316,7 +320,7 @@ private fun Context.setTranslucentView(
             translucentView = View(container.context)
             translucentView.id = android.R.id.custom
             val lp = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight()
+                    ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight()
             )
             container.addView(translucentView, lp)
         }
@@ -324,6 +328,20 @@ private fun Context.setTranslucentView(
     }
 }
 // </editor-fold>
+
+//<editor-fold desc="ActionBar">
+fun AppCompatActivity.setActionBarBackground(@ColorInt color: Int) {
+    supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
+}
+
+fun AppCompatActivity.setActionBarBackgroundRes(@ColorRes color: Int) {
+    supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(color)))
+}
+
+fun AppCompatActivity.setActionBarTransparent() {
+    supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+}
+//</editor-fold>
 
 // <editor-fold desc="辅助">
 

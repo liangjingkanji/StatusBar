@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package com.drake.statusbar
+package com.drake.statusbar.sample
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import android.os.Bundle
+import com.drake.statusbar.darkMode
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+class DarkStatusBarActivity : BaseMenuActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_dark_status_bar)
+        title = "暗色状态栏"
+        darkMode()
     }
 }
