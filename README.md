@@ -18,7 +18,6 @@
 - [x] 状态栏背景颜色
 - [x] 状态栏文字颜色(亮|暗色模式)
 - [x] 支持Activity/Fragment/DrawerLayout
-- [x] 
 - [x] Kotlin特性
 
 
