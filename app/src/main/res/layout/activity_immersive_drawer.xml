@@ -32,7 +32,7 @@
             android:layout_height="56dp"
             android:background="@color/colorPrimary"
             android:theme="@style/Toolbar"
-            app:title="抽屉状态栏"
+            app:title="@string/app_name"
             app:titleTextColor="@android:color/white" />
 
     </FrameLayout>

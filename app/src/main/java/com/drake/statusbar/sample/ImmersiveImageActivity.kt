@@ -24,7 +24,6 @@ class ImmersiveImageActivity : BaseMenuActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_immerse_image)
-        title = "图片状态栏"
 
         setActionBarTransparent()
         immersive()

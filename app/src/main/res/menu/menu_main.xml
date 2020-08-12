@@ -17,7 +17,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mainActivity"
-        android:title="ToolBar" />
+        android:title="亮色状态栏" />
     <item
         android:id="@+id/darkStatusBarActivity"
         android:title="暗色状态栏" />

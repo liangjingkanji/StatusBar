@@ -23,7 +23,6 @@ class DarkStatusBarActivity : BaseMenuActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dark_status_bar)
-        title = "暗色状态栏"
         darkMode()
     }
 }

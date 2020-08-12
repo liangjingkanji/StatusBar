@@ -264,6 +264,8 @@ private fun darkModeForMIUI6(window: Window, darkMode: Boolean): Boolean {
  * 增加View的上内边距, 增加高度为状态栏高度, 防止视图和状态栏重叠
  * 如果是RelativeLayout设置padding值会导致centerInParent等属性无法正常显示
  * @receiver View
+ * @see immersive
+ * @see immersiveDark
  */
 fun View.statusPadding() {
     if (this is RelativeLayout) {

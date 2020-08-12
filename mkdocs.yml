@@ -1,0 +1,43 @@
+site_name: StatusBar
+site_author: drake
+site_description: StatusBar document
+copyright: Copyright &copy; 2018 - 2020 Drake
+
+repo_name: StatusBar
+repo_url: https://github.com/liangjingkanji/StatusBar
+
+extra_css:
+  - css/extra.css
+
+docs_dir: 'docs'
+
+theme:
+  name: material
+  custom_dir: docs/material
+
+  palette:
+    primary: 'teal'
+    accent: 'teal'
+
+  font:
+    text: JetBrains Mono
+    code: JetBrains Mono
+  language: zh
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - 通用透明状态栏: 'index.md'
+  - 图片透明状态栏: 'image.md'
+  - 状态栏颜色: 'status-bar-color.md'
+  - 其他: 'other.md'
