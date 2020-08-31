@@ -2,9 +2,9 @@
 
 <p align="center"><img src="https://i.imgur.com/o18sw7W.jpg" alt="1600" width="50%"/></p>
 
-<p align="center"><strong>一行代码的透明状态栏</strong></p><br>
+<p align="center"><strong>一行代码的透明状态栏</strong></p>
 
-<p align="center"><img src="https://i.imgur.com/6U0URPv.jpg" width="50%"/></p>
+<p align="center"><img src="https://i.imgur.com/6U0URPv.jpg" width="70%"/></p>
 
 <p align="center">
 <a href="https://jitpack.io/#liangjingkanji/StatusBar"><img src="https://jitpack.io/v/liangjingkanji/StatusBar.svg"/></a>
