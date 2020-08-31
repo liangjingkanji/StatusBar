@@ -16,11 +16,13 @@
 
 ### 特点
 
-- [x] 透明状态栏
-- [x] 状态栏背景颜色
-- [x] 状态栏文字颜色(亮|暗色模式)
-- [x] 支持Activity/Fragment/DrawerLayout
-- [x] Kotlin特性
+- 透明状态栏
+- 状态栏背景颜色
+- 状态栏文字颜色(亮|暗色模式)
+- 支持Activity/Fragment/DrawerLayout
+- Kotlin特性
+- 一行代码实现
+- 文档详细, Demo简单
 
 
 <br>
