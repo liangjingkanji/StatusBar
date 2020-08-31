@@ -4,6 +4,8 @@
 
 <p align="center"><strong>一行代码的透明状态栏</strong></p><br>
 
+<p align="center"><img src="https://i.imgur.com/6U0URPv.jpg" width="50%"/></p>
+
 <p align="center">
 <a href="https://jitpack.io/#liangjingkanji/StatusBar"><img src="https://jitpack.io/v/liangjingkanji/StatusBar.svg"/></a>
 <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/>
@@ -19,10 +21,6 @@
 - [x] 状态栏文字颜色(亮|暗色模式)
 - [x] 支持Activity/Fragment/DrawerLayout
 - [x] Kotlin特性
-
-
-
-
 
 
 <br>
