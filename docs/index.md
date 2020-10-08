@@ -23,52 +23,42 @@
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        immersiveDark(toolbar)
+        immersive(toolbar, true) // 第二个参数即设置状态栏文字颜色暗色模式
     }
     ```
 
 <br>
 
-## 函数
-```kotlin
-fun Activity.immersive(
-    view: View? = null, // 给指定的视图设置一个paddingTop避免被状态栏覆盖
-    @ColorInt color: Int = DEFAULT_COLOR, // 状态栏背景颜色
-    @FloatRange(from = 0.0, to = 1.0) alpha: Float = DEFAULT_ALPHA // 背景颜色的透明度 0 - 1
-)
-
-fun Activity.immersiveDark(
-    view: View? = null,
-    darkMode: Boolean = true, // 状态栏的文字颜色是否显示黑色
-    @ColorInt color: Int = DEFAULT_COLOR,
-    @FloatRange(from = 0.0, to = 1.0) alpha: Float = DEFAULT_ALPHA
-)
-
-fun Activity.darkMode(darkMode: Boolean = true)
-// 可以通过此函数单独设置暗色模式或者恢复为亮色模式
-```
+| 函数 | 描述 |
+|-|-|
+| Activity.`translucent` | 设置半透明状态栏 |
+| Activity.`immersive` | 设置全透明状态栏或者状态栏颜色 |
+| Activity.`immersiveRes` | 和上面函数区别是使用颜色资源值 |
+| Activity.`darkMode` | 设置状态栏文字颜色为黑色 |
+| View.`statusPadding` | 为View的PaddingTop增加一个状态栏高度 |
+| Activity.`setActionBarBackground` | 设置ActionBar的背景颜色, 如果存在ActionBar的话 |
 
 <br>
 
-!!! tip
-    Toolbar即你在布局中创建的标题栏视图
-    ```xml
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+Toolbar即你在布局中创建的标题栏视图
+
+```xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Toolbar"
+        app:title="ToolBar"
+        app:titleTextColor="@android:color/white" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@color/colorPrimary"
-            android:theme="@style/Toolbar"
-            app:title="ToolBar"
-            app:titleTextColor="@android:color/white" />
-
-    </LinearLayout>
-    ```
+</LinearLayout>
+```

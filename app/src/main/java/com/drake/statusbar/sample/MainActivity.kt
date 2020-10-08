@@ -29,6 +29,6 @@ class MainActivity : BaseMenuActivity() {
         toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
         immersive(toolbar)
         // or dark status bar
-        // immersiveDark(toolbar)
+        // immersive(toolbar, true)
     }
 }
