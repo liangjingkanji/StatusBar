@@ -1,31 +1,9 @@
-```kotlin
-fun Activity.setStatusBarColor(
-    @ColorInt color: Int,
-    darkMode: Boolean? = null,
-    @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1F
-)
-// 仅设置状态栏的颜色
-
-fun Activity.setStatusBarColorRes(
-    @ColorRes colorRes: Int,
-    darkMode: Boolean? = null,
-    @FloatRange(from = 0.0, to = 1.0) alpha: Float = 1F
-)
-// 仅设置状态栏的颜色(颜色资源)
-```
-
-<br>
-
-!!! tip
-    `setStatusBarColor`和`immersive`的区别是不会导致状态栏覆盖布局内容, 仅仅是设置状态栏的背景/文字颜色
-
-
 === "亮色模式"
     ```kotlin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dark_status_bar)
-        setStatusBarColor(Color.YELLOW)
+        immersive(Color.YELLOW)
     }
     ```
     <img src="https://i.imgur.com/OV4EJIS.png" width="50%"/>
@@ -35,8 +13,29 @@ fun Activity.setStatusBarColorRes(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dark_status_bar)
-        setStatusBarColor(Color.YELLOW, true)
+        immersive(Color.YELLOW, true)
     }
     ```
     <img src="https://i.imgur.com/zzGUGWV.png" width="50%"/>
 
+
+`immersive`这个函数还可以传入View进去, 就会自动使用View的背景色作为状态栏颜色.
+
+```kotlin
+class MainActivity : BaseMenuActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        toolbar.inflateMenu(R.menu.menu_main)
+        toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
+        immersive(toolbar)
+        // or dark status bar
+        // immersive(toolbar, true)
+    }
+}
+```
+<br>
+
+!!! note
+    使用`immersive`不传入颜色值或者View就会使用透明状态栏, 状态栏会盖在视图上. 注意透明状态栏会导致键盘遮挡输入框, 这是所有透明状态栏的通病

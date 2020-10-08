@@ -30,9 +30,24 @@ open class BaseMenuActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.immersiveDrawerActivity -> startActivity(Intent(this, ImmersiveDrawerActivity::class.java))
-            R.id.immersiveImageActivity -> startActivity(Intent(this, ImmersiveImageActivity::class.java))
-            R.id.darkStatusBarActivity -> startActivity(Intent(this, DarkStatusBarActivity::class.java))
+            R.id.immersiveDrawerActivity -> startActivity(
+                Intent(
+                    this,
+                    ImmersiveDrawerActivity::class.java
+                )
+            )
+            R.id.immersiveImageActivity -> startActivity(
+                Intent(
+                    this,
+                    ImmersiveImageActivity::class.java
+                )
+            )
+            R.id.darkStatusBarActivity -> startActivity(
+                Intent(
+                    this,
+                    DarkStatusBarActivity::class.java
+                )
+            )
             R.id.mainActivity -> startActivity(Intent(this, MainActivity::class.java))
         }
         finish()

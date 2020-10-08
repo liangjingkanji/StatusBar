@@ -18,7 +18,8 @@ package com.drake.statusbar.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.drake.statusbar.immersive
+import com.drake.statusbar.statusPadding
+import com.drake.statusbar.translucent
 import kotlinx.android.synthetic.main.activity_immersive_drawer.*
 
 class ImmersiveDrawerActivity : BaseMenuActivity() {
@@ -26,10 +27,27 @@ class ImmersiveDrawerActivity : BaseMenuActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_immersive_drawer)
 
-        val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.open_drawer, R.string.close_drawer)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
         drawer.addDrawerListener(toggle)
         toggle.syncState()
-        immersive(toolbar)
+
+        // 使抽屉展开后是半透明状态栏
+        translucent()
+        toolbar.statusPadding()
+
+        // 以下属于全透明状态栏方案
+        // immersive()
+        // toolbar.statusPadding()
+
+        // 如果不需要抽屉展开后是半透明状态栏直接设置以下即可, 以下属于设置状态栏颜色方案
+        // immersive(toolbar)
+
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
     }
