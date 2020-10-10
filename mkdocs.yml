@@ -3,7 +3,7 @@ site_author: drake
 site_description: StatusBar document
 copyright: Copyright &copy; 2018 - 2020 Drake
 
-repo_name: StatusBar
+repo_name: GitHub
 repo_url: https://github.com/liangjingkanji/StatusBar
 
 extra_css:
@@ -17,6 +17,7 @@ theme:
 
   palette:
     scheme: drake
+    primary: white
 
   font: false
 

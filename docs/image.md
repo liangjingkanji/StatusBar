@@ -45,5 +45,4 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```
 <br>
 
-!!! note
-    这里我说的是Toolbar, 实际上可以是任何视图
+> 这里我说的是Toolbar, 实际上可以是任何视图
