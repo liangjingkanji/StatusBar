@@ -4,7 +4,9 @@
 
 <p align="center"><strong>一行代码的透明状态栏</strong></p>
 
-<p align="center"><img src="https://i.imgur.com/6U0URPv.jpg" width="70%"/></p>
+<p align="center"><a href="http://liangjingkanji.github.io/StatusBar/">使用文档</a></p>
+
+<p align="center"><img src="https://i.imgur.com/xSxATkx.jpg" width="500"/></p>
 
 <p align="center">
 <a href="https://jitpack.io/#liangjingkanji/StatusBar"><img src="https://jitpack.io/v/liangjingkanji/StatusBar.svg"/></a>
@@ -12,7 +14,6 @@
 <img src="https://img.shields.io/badge/license-Apache-blue"/>
 <a href="https://jq.qq.com/?_wv=1027&k=vWsXSNBJ"><img src="https://img.shields.io/badge/QQ群-752854893-blue"/></a>
 </p>
-<p align="center"><a href="http://liangjingkanji.github.io/StatusBar/">使用文档</a></p>
 
 ### 特点
 
