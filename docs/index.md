@@ -6,7 +6,7 @@
 
 
 === "亮色模式"
-    <img src="https://i.imgur.com/n4lPbRt.png" width="50%"/>
+    <img src="https://i.imgur.com/n4lPbRt.png" width="250"/>
     ```kotlin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

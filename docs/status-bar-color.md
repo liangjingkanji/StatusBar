@@ -6,7 +6,7 @@
         immersive(Color.YELLOW)
     }
     ```
-    <img src="https://i.imgur.com/OV4EJIS.png" width="50%"/>
+    <img src="https://i.imgur.com/OV4EJIS.png" width="250"/>
 
 === "暗色模式"
     ```kotlin
@@ -16,7 +16,7 @@
         immersive(Color.YELLOW, true)
     }
     ```
-    <img src="https://i.imgur.com/zzGUGWV.png" width="50%"/>
+    <img src="https://i.imgur.com/zzGUGWV.png" width="250"/>
 
 
 `immersive`这个函数还可以传入View进去, 就会自动使用View的背景色作为状态栏颜色.
