@@ -19,9 +19,11 @@ package com.drake.statusbar.sample
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 
-open class BaseMenuActivity : AppCompatActivity() {
+open class BaseMenuActivity(@LayoutRes contentLayoutId: Int = 0) :
+    AppCompatActivity(contentLayoutId) {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)

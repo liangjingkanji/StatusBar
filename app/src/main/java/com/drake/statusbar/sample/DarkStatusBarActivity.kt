@@ -19,10 +19,9 @@ package com.drake.statusbar.sample
 import android.os.Bundle
 import com.drake.statusbar.darkMode
 
-class DarkStatusBarActivity : BaseMenuActivity() {
+class DarkStatusBarActivity : BaseMenuActivity(R.layout.activity_dark_status_bar) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dark_status_bar)
         darkMode()
     }
 }

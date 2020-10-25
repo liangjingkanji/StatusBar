@@ -20,11 +20,9 @@ import android.os.Bundle
 import com.drake.statusbar.immersive
 import com.drake.statusbar.setActionBarTransparent
 
-class ImmersiveImageActivity : BaseMenuActivity() {
+class ImmersiveImageActivity : BaseMenuActivity(R.layout.activity_immerse_image) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_immerse_image)
-
         setActionBarTransparent()
         immersive()
     }

@@ -20,11 +20,10 @@ import android.os.Bundle
 import com.drake.statusbar.immersive
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseMenuActivity() {
+class MainActivity : BaseMenuActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
         immersive(toolbar)

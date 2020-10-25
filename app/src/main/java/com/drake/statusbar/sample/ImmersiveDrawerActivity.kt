@@ -22,10 +22,9 @@ import com.drake.statusbar.statusPadding
 import com.drake.statusbar.translucent
 import kotlinx.android.synthetic.main.activity_immersive_drawer.*
 
-class ImmersiveDrawerActivity : BaseMenuActivity() {
+class ImmersiveDrawerActivity : BaseMenuActivity(R.layout.activity_immersive_drawer) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_immersive_drawer)
 
         val toggle = ActionBarDrawerToggle(
             this,
