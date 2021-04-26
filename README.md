@@ -4,7 +4,7 @@
 
 <p align="center"><strong>一行代码的透明状态栏</strong></p>
 
-<p align="center"><a href="http://liangjingkanji.github.io/StatusBar/">使用文档</a></p>
+<p align="center"><a href="http://liangjingkanji.github.io/StatusBar/">使用文档</a> | <a href="https://coding-pages-bucket-3558162-8706000-16648-587726-1252757332.cos-website.ap-shanghai.myqcloud.com/">备用访问</a></p>
 
 <p align="center"><img src="https://i.imgur.com/xSxATkx.jpg" width="500"/></p>
 
