@@ -44,6 +44,7 @@ private const val COLOR_TRANSPARENT = 0
  * @param translucent 是否显示透明状态栏
  * @param darkMode 是否显示暗色状态栏文字颜色
  */
+@JvmOverloads
 fun Activity.translucent(
     translucent: Boolean = true,
     darkMode: Boolean? = null
@@ -63,6 +64,7 @@ fun Activity.translucent(
 /**
  * 使用视图的背景色作为状态栏颜色
  */
+@JvmOverloads
 fun Activity.immersive(view: View, darkMode: Boolean? = null) {
     val background = view.background
     if (background is ColorDrawable) {
@@ -79,6 +81,7 @@ fun Activity.immersive(view: View, darkMode: Boolean? = null) {
  * @param darkMode 是否显示暗色状态栏文字颜色
  */
 @SuppressLint("ObsoleteSdkInt")
+@JvmOverloads
 fun Activity.immersive(@ColorInt color: Int = COLOR_TRANSPARENT, darkMode: Boolean? = null) {
     when {
         Build.VERSION.SDK_INT >= 21 -> {
@@ -119,6 +122,7 @@ fun Activity.immersive(@ColorInt color: Int = COLOR_TRANSPARENT, darkMode: Boole
 /**
  * 获取颜色资源值来设置状态栏
  */
+@JvmOverloads
 fun Activity.immersiveRes(@ColorRes color: Int, darkMode: Boolean? = null) =
     immersive(resources.getColor(color), darkMode)
 
@@ -133,6 +137,7 @@ fun Activity.immersiveRes(@ColorRes color: Int, darkMode: Boolean? = null) =
  *
  * @param darkMode 状态栏文字是否为暗色
  */
+@JvmOverloads
 fun Activity.darkMode(darkMode: Boolean = true) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         var systemUiVisibility = window.decorView.systemUiVisibility
@@ -156,6 +161,7 @@ fun Activity.darkMode(darkMode: Boolean = true) {
  * @param remove true: paddingTop = 状态栏高度
  *               false: paddingTop = 0
  */
+@JvmOverloads
 fun View.statusPadding(remove: Boolean = false) {
     if (this is RelativeLayout) {
         throw UnsupportedOperationException("Unsupported set statusPadding for RelativeLayout")
@@ -229,6 +235,7 @@ fun AppCompatActivity.setActionBarTransparent() {
  *
  * @param enabled 是否显示导航栏
  */
+@JvmOverloads
 fun Activity.setNavigationBar(enabled: Boolean = true) {
     if (Build.VERSION.SDK_INT in 12..18) {
         if (enabled) {
@@ -253,6 +260,7 @@ fun Activity.setNavigationBar(enabled: Boolean = true) {
  *
  * @param enabled 是否全屏显示
  */
+@JvmOverloads
 fun Activity.setFullscreen(enabled: Boolean = true) {
     val systemUiVisibility = window.decorView.systemUiVisibility
     window.decorView.systemUiVisibility = if (enabled) {

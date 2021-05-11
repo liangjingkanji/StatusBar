@@ -42,7 +42,7 @@ allprojects {
 在 module 的 build.gradle 添加依赖
 
 ```groovy
-implementation 'com.github.liangjingkanji:StatusBar:1.1.0'
+implementation 'com.github.liangjingkanji:StatusBar:1.1.1'
 ```
 
 <br>
