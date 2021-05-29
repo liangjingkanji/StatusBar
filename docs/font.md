@@ -37,4 +37,4 @@ class MainActivity : BaseMenuActivity() {
 ```
 <br>
 
-> 使用`immersive`不传入颜色值或者View就会使用透明状态栏, 状态栏会盖在视图上. 注意透明状态栏会导致键盘遮挡输入框, 这是所有透明状态栏的通病
+> 使用`immersive`不传入颜色值或者View就会使用透明状态栏, 状态栏会盖在视图上. 仅设置状态栏文字颜色使用`darkMode`函数
