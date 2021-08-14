@@ -1,7 +1,7 @@
 
 所有函数都在`StatusBar`文件中
 
-<img src="https://i.imgur.com/gWUE8E5.png" width="500"/>
+<img src="https://i.loli.net/2021/08/14/BlcOyvifnaqeFoQ.png" width="500"/>
 
 
 辅助函数
@@ -13,3 +13,4 @@
 | Activity?.isNavigationBar | 是否存在导航栏 |
 | Context?.navigationBarHeight | 导航栏高度 |
 | Context?.statusBarHeight | 状态栏高度 |
+

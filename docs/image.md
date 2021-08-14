@@ -12,7 +12,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-<img src="https://i.imgur.com/DwfyPMy.png" width="250"/>
+<img src="https://i.loli.net/2021/08/14/IGo5tnA6ENvRTfp.png" width="250"/>
 
 ## ActionBar
 
@@ -28,7 +28,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-<img src="https://i.imgur.com/u3hhuch.jpg" width="250"/>
+<img src="https://i.loli.net/2021/08/14/VJmtPjAEk619v2B.jpg" width="250"/>
 
 ## Toolbar
 
