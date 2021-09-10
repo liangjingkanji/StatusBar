@@ -31,12 +31,30 @@ import android.widget.RelativeLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 private const val COLOR_TRANSPARENT = 0
 
+//<editor-fold desc="状态栏颜色">
+/** 设置状态栏颜色 */
+fun Activity.statusBarColor(@ColorInt color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window?.statusBarColor = color
+    }
+}
+
+/** 设置状态栏颜色 */
+fun Fragment.statusBarColor(@ColorInt color: Int) = activity?.statusBarColor(color)
+
+/** 设置状态栏颜色 */
+fun Activity.statusBarColorRes(@ColorRes colorRes: Int) = statusBarColor(resources.getColor(colorRes))
+
+/** 设置状态栏颜色 */
+fun Fragment.statusBarColorRes(@ColorRes colorRes: Int) = activity?.statusBarColorRes(colorRes)
+//</editor-fold>
+
+
 // <editor-fold desc="透明状态栏">
-
-
 /**
  * 半透明状态栏
  * 会导致键盘遮挡输入框, 为根布局设置[View.setFitsSystemWindows]为true可以解决
