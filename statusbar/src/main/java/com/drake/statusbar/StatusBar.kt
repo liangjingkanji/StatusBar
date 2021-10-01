@@ -63,10 +63,7 @@ fun Fragment.statusBarColorRes(@ColorRes colorRes: Int) = activity?.statusBarCol
  * @param darkMode 是否显示暗色状态栏文字颜色
  */
 @JvmOverloads
-fun Activity.translucent(
-    translucent: Boolean = true,
-    darkMode: Boolean? = null
-) {
+fun Activity.translucent(translucent: Boolean = true, darkMode: Boolean? = null) {
     if (Build.VERSION.SDK_INT >= 19) {
         if (translucent) {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -116,8 +113,7 @@ fun Activity.immersive(@ColorInt color: Int = COLOR_TRANSPARENT, darkMode: Boole
                 else -> {
                     window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
                     var systemUiVisibility = window.decorView.systemUiVisibility
-                    systemUiVisibility =
-                        systemUiVisibility and View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    systemUiVisibility = systemUiVisibility and View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     systemUiVisibility = systemUiVisibility and View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     window.decorView.systemUiVisibility = systemUiVisibility
                     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -134,6 +130,16 @@ fun Activity.immersive(@ColorInt color: Int = COLOR_TRANSPARENT, darkMode: Boole
     }
     if (darkMode != null) {
         darkMode(darkMode)
+    }
+}
+
+/** 退出沉浸式状态栏 */
+fun Activity.immersiveExit() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        }
     }
 }
 
