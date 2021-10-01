@@ -62,6 +62,7 @@ fun Fragment.statusBarColorRes(@ColorRes colorRes: Int) = activity?.statusBarCol
  * @param translucent 是否显示透明状态栏
  * @param darkMode 是否显示暗色状态栏文字颜色
  */
+@Deprecated("建议使用immersive取代, 因为该函数会影响键盘遮挡解决方案", ReplaceWith("immersive"), DeprecationLevel.ERROR)
 @JvmOverloads
 fun Activity.translucent(translucent: Boolean = true, darkMode: Boolean? = null) {
     if (Build.VERSION.SDK_INT >= 19) {
