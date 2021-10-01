@@ -57,7 +57,7 @@ dependencyResolutionManagement {
 然后在 module 的 build.gradle 添加依赖框架
 
 ```groovy
-implementation 'com.github.liangjingkanji:StatusBar:1.1.2'
+implementation 'com.github.liangjingkanji:StatusBar:2.0.1'
 ```
 
 <br>
