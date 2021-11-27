@@ -180,11 +180,9 @@ fun Activity.darkMode(darkMode: Boolean = true) {
 // <editor-fold desc="间距">
 
 /**
- * 增加View的上内边距, 增加高度为状态栏高度, 防止视图和状态栏重叠
+ * 增加View的paddingTop, 增加高度为状态栏高度, 用于防止视图和状态栏重叠
  * 如果是RelativeLayout设置padding值会导致centerInParent等属性无法正常显示
- *
- * @param remove true: paddingTop = 状态栏高度
- *               false: paddingTop = 0
+ * @param remove 如果默认paddingTop大于状态栏高度则添加无效, 如果小于状态栏高度则无法删除
  */
 @JvmOverloads
 fun View.statusPadding(remove: Boolean = false) {
@@ -209,6 +207,27 @@ fun View.statusPadding(remove: Boolean = false) {
                 paddingLeft, paddingTop + statusBarHeight,
                 paddingRight, paddingBottom
             )
+        }
+    }
+}
+
+/**
+ * 增加View的marginTop值, 增加高度为状态栏高度, 用于防止视图和状态栏重叠
+ * @param remove 如果默认marginTop大于状态栏高度则添加无效, 如果小于状态栏高度则无法删除
+ */
+@JvmOverloads
+fun View.statusMargin(remove: Boolean = false) {
+    if (Build.VERSION.SDK_INT >= 19) {
+        val statusBarHeight = context.statusBarHeight
+        val lp = layoutParams as ViewGroup.MarginLayoutParams
+        if (remove) {
+            if (lp.topMargin < statusBarHeight) return
+            lp.topMargin -= statusBarHeight
+            layoutParams = lp
+        } else {
+            if (lp.topMargin >= statusBarHeight) return
+            lp.topMargin += statusBarHeight
+            layoutParams = lp
         }
     }
 }
