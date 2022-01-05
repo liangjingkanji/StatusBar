@@ -79,6 +79,8 @@ fun Activity.translucent(translucent: Boolean = true, darkMode: Boolean? = null)
 
 /**
  * 使用视图的背景色作为状态栏颜色
+ * @param view 提取该View的背景颜色设置为状态栏颜色, 如果该View没有背景颜色则该函数调用无效
+ * @param darkMode 是否显示暗色状态栏文字颜色
  */
 @JvmOverloads
 fun Activity.immersive(view: View, darkMode: Boolean? = null) {
@@ -89,7 +91,8 @@ fun Activity.immersive(view: View, darkMode: Boolean? = null) {
 }
 
 /**
- * 设置透明状态栏或者状态栏颜色, 会导致状态栏覆盖界面
+ * 设置透明状态栏或者状态栏颜色, 此函数会导致状态栏覆盖界面,
+ * 如果不希望被状态栏遮挡Toolbar请再调用[statusPadding]设置视图的paddingTop 或者 [statusMargin]设置视图的marginTop为状态栏高度
  *
  * 如果不指定状态栏颜色则会应用透明状态栏(全屏属性), 会导致键盘遮挡输入框
  *
