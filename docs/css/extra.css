@@ -36,18 +36,20 @@
 }
 
 /*字体渲染*/
-@font-face {
-    font-family: 'Iosevka';
-    src: local('Iosevka Medium'),
-         url('https://raw.githubusercontent.com/liangjingkanji/liangjingkanji/master/font/iosevka/iosevka-medium.woff2') format('woff2');
+@font-face{
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
     font-display: swap;
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'Iosevka';
-    src: local('Iosevka-bold'),
-         url('https://raw.githubusercontent.com/liangjingkanji/liangjingkanji/master/font/iosevka/iosevka-medium.woff2') format('woff2');
+@font-face{
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Bold.ttf') format('truetype');
     font-display: swap;
     font-weight: bold;
     font-style: normal;
@@ -63,17 +65,18 @@
 @font-face{
     font-family: 'HYZhengYuan';
     src: local('HYZhengYuan-75W'),
-         url('https://raw.githubusercontent.com/liangjingkanji/liangjingkanji/master/font/HYZhengYuan.ttf') format('truetype');
+         url('https://raw.githubusercontent.com/liangjingkanji/liangjingkanji/master/font/HYZhengYuan-75W.ttf') format('truetype');
     font-display: swap;
     font-weight: bold;
     font-style: normal;
 }
+
 * {
     -webkit-font-feature-settings: "liga" on, "calt" on;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
     text-rendering: optimizeLegibility;
-    font-family: 'Iosevka', "HYZhengYuan" !important;
+    font-family: "JetBrains Mono", HYZhengYuan, monospace !important;
 }
 
 /*布局*/
@@ -103,6 +106,7 @@ table tr:nth-child(2n), thead {
     box-shadow:none;
     font-size: var(--drake-font-size);
 }
+
 .md-typeset table:not([class]) th {
     border: 1px solid #dfe2e5;
     background-color: #f2f2f2;
@@ -114,7 +118,18 @@ table tr:nth-child(2n), thead {
     border: 1px solid #dfe2e5;
 }
 
+/*隐藏搜索框, 因为不支持中文搜索*/
+.md-search__form {
+    visibility: hidden;
+}
+
 /*引用*/
+.md-typeset :is(.admonition,details) {
+    font-size: 12px;
+}
+[dir=ltr] .md-typeset blockquote {
+    border-left:none;
+}
 .md-typeset blockquote {
     color: inherit;
     padding: 10px 16px;
