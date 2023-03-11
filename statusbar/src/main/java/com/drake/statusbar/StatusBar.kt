@@ -56,28 +56,6 @@ fun Fragment.statusBarColorRes(@ColorRes colorRes: Int) = activity?.statusBarCol
 
 // <editor-fold desc="透明状态栏">
 /**
- * 半透明状态栏
- * 会导致键盘遮挡输入框, 为根布局设置[View.setFitsSystemWindows]为true可以解决
- *
- * @param translucent 是否显示透明状态栏
- * @param darkMode 是否显示暗色状态栏文字颜色
- */
-@Deprecated("建议使用immersive取代, 因为该函数会影响键盘遮挡解决方案", ReplaceWith("immersive"), DeprecationLevel.ERROR)
-@JvmOverloads
-fun Activity.translucent(translucent: Boolean = true, darkMode: Boolean? = null) {
-    if (Build.VERSION.SDK_INT >= 19) {
-        if (translucent) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        } else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
-    }
-    if (darkMode != null) {
-        darkMode(darkMode)
-    }
-}
-
-/**
  * 使用视图的背景色作为状态栏颜色
  * @param v 提取该View的背景颜色设置为状态栏颜色, 如果该View没有背景颜色则该函数调用无效
  * @param darkMode 是否显示暗色状态栏文字颜色

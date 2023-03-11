@@ -18,8 +18,8 @@ package com.drake.statusbar.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.drake.statusbar.immersive
 import com.drake.statusbar.statusPadding
-import com.drake.statusbar.translucent
 import kotlinx.android.synthetic.main.activity_immersive_drawer.*
 
 class ImmersiveDrawerActivity : BaseMenuActivity(R.layout.activity_immersive_drawer) {
@@ -37,7 +37,7 @@ class ImmersiveDrawerActivity : BaseMenuActivity(R.layout.activity_immersive_dra
         toggle.syncState()
 
         // 使抽屉展开后是半透明状态栏
-        translucent()
+        immersive()
         toolbar.statusPadding()
 
         // 以下属于全透明状态栏方案
