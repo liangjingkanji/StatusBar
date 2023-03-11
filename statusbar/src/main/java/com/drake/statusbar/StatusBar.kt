@@ -39,6 +39,7 @@ private const val COLOR_TRANSPARENT = 0
 /** 设置状态栏颜色 */
 fun Activity.statusBarColor(@ColorInt color: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window?.statusBarColor = color
     }
 }
