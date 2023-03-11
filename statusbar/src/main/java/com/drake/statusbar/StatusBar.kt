@@ -79,12 +79,12 @@ fun Activity.translucent(translucent: Boolean = true, darkMode: Boolean? = null)
 
 /**
  * 使用视图的背景色作为状态栏颜色
- * @param view 提取该View的背景颜色设置为状态栏颜色, 如果该View没有背景颜色则该函数调用无效
+ * @param v 提取该View的背景颜色设置为状态栏颜色, 如果该View没有背景颜色则该函数调用无效
  * @param darkMode 是否显示暗色状态栏文字颜色
  */
 @JvmOverloads
-fun Activity.immersive(view: View, darkMode: Boolean? = null) {
-    val background = view.background
+fun Activity.immersive(v: View, darkMode: Boolean? = null) {
+    val background = v.background
     if (background is ColorDrawable) {
         immersive(background.color, darkMode)
     }
@@ -103,29 +103,22 @@ fun Activity.immersive(view: View, darkMode: Boolean? = null) {
 @JvmOverloads
 fun Activity.immersive(@ColorInt color: Int = COLOR_TRANSPARENT, darkMode: Boolean? = null) {
     when {
-        Build.VERSION.SDK_INT >= 21 -> {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP -> {
             when (color) {
                 COLOR_TRANSPARENT -> {
                     window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                    var systemUiVisibility = window.decorView.systemUiVisibility
-                    systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    systemUiVisibility = systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    window.decorView.systemUiVisibility = systemUiVisibility
                     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
                     window.statusBarColor = color
                 }
                 else -> {
                     window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                    var systemUiVisibility = window.decorView.systemUiVisibility
-                    systemUiVisibility = systemUiVisibility and View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    systemUiVisibility = systemUiVisibility and View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    window.decorView.systemUiVisibility = systemUiVisibility
                     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                     window.statusBarColor = color
                 }
             }
         }
-        Build.VERSION.SDK_INT >= 19 -> {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT -> {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             if (color != COLOR_TRANSPARENT) {
                 setTranslucentView(window.decorView as ViewGroup, color)
@@ -137,12 +130,27 @@ fun Activity.immersive(@ColorInt color: Int = COLOR_TRANSPARENT, darkMode: Boole
     }
 }
 
-/** 退出沉浸式状态栏 */
-fun Activity.immersiveExit() {
+/**
+ * 退出沉浸式状态栏并恢复默认状态栏颜色
+ *
+ * @param black 是否显示黑色状态栏白色文字(不恢复状态栏颜色)
+ */
+@JvmOverloads
+fun Activity.immersiveExit(black: Boolean = false) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                and View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+
+        // 恢复默认状态栏颜色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            if (black) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            } else {
+                val typedArray = obtainStyledAttributes(intArrayOf(android.R.attr.statusBarColor))
+                window.statusBarColor = typedArray.getColor(0, 0)
+                typedArray.recycle()
+            }
         }
     }
 }
