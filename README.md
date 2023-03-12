@@ -7,7 +7,7 @@
 <p align="center">
 <a href="http://liangjingkanji.github.io/StatusBar/">使用文档</a>
 | <a href="https://github.com/liangjingkanji/document/blob/master/visit-pages.md">无法访问?</a>
-| <a href="https://github.com/liangjingkanji/StatusBar/releases/download/2.0.4/StatusBar.apk">下载体验</a>
+| <a href="https://github.com/liangjingkanji/StatusBar/releases/download/2.0.5/StatusBar.apk">下载体验</a>
 </p>
 
 <p align="center"><img src="https://i.imgur.com/bAaaokr.png" width="400"/></p>
@@ -21,13 +21,12 @@
 
 ### 特点
 
-- 透明状态栏
-- 状态栏背景颜色
-- 状态栏文字颜色(亮|暗色模式)
-- 支持Activity/Fragment/DrawerLayout
-- Kotlin特性
-- 一行代码实现
-- 文档详细, Demo简单
+- [x] 学习成本低
+- [x] 启用/关闭透明状态栏
+- [x] 状态栏背景/文字颜色
+- [x] 状态栏/导航栏高度
+- [x] 为View设置指定状态栏高度的Padding/Margin
+- [x] 支持Activity/Fragment/DrawerLayout
 
 
 <br>
@@ -61,7 +60,7 @@ dependencyResolutionManagement {
 然后在 module 的 build.gradle 添加依赖框架
 
 ```groovy
-implementation 'com.github.liangjingkanji:StatusBar:2.0.4'
+implementation 'com.github.liangjingkanji:StatusBar:2.0.5'
 ```
 
 <br>
