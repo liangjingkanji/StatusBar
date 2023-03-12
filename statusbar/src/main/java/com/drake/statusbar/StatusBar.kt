@@ -31,7 +31,6 @@ import android.widget.RelativeLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 
 private const val COLOR_TRANSPARENT = 0
 
@@ -45,13 +44,8 @@ fun Activity.statusBarColor(@ColorInt color: Int) {
 }
 
 /** 设置状态栏颜色 */
-fun Fragment.statusBarColor(@ColorInt color: Int) = activity?.statusBarColor(color)
-
-/** 设置状态栏颜色 */
 fun Activity.statusBarColorRes(@ColorRes colorRes: Int) = statusBarColor(resources.getColor(colorRes))
 
-/** 设置状态栏颜色 */
-fun Fragment.statusBarColorRes(@ColorRes colorRes: Int) = activity?.statusBarColorRes(colorRes)
 //</editor-fold>
 
 
