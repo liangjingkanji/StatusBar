@@ -1,40 +1,18 @@
 === "亮色模式"
     ```kotlin
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dark_status_bar)
-        immersive(Color.YELLOW)
-    }
+    immersive(Color.YELLOW)
     ```
-​    <img src="https://i.loli.net/2021/08/14/6eQ9r3icyzpP72T.png" width="250"/>
+    <img src="https://i.loli.net/2021/08/14/6eQ9r3icyzpP72T.png" width="250"/>
 
 === "暗色模式"
     ```kotlin
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dark_status_bar)
-        immersive(Color.YELLOW, true)
-    }
+    immersive(Color.YELLOW, true)
     ```
-​    <img src="https://i.loli.net/2021/08/14/y8NRfwGjEKl2Th7.png" width="250"/>
+    <img src="https://i.loli.net/2021/08/14/y8NRfwGjEKl2Th7.png" width="250"/>
 
 
-`immersive`这个函数还可以传入View进去, 就会自动使用View的背景色作为状态栏颜色.
-
-```kotlin
-class MainActivity : BaseMenuActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        toolbar.inflateMenu(R.menu.menu_main)
-        toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
-        immersive(toolbar)
-        // or dark status bar
-        // immersive(toolbar, true)
-    }
-}
-```
-<br>
-
-> 使用`immersive`不传入颜色值或者View就会使用透明状态栏, 状态栏会盖在视图上. 仅设置状态栏文字颜色使用`darkMode`函数
+!!! note "使用View"
+    `immersive`这个函数还可以传入View进去, 就会自动使用View的背景色作为状态栏颜色
+    ```kotlin
+    immersive(toolbar)
+    ```

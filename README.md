@@ -1,6 +1,6 @@
 ## StatusBar
 
-<p align="center"><img src="https://i.imgur.com/o18sw7W.jpg" alt="1600" width="50%"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/liangjingkanji/StatusBar/master/docs/img/preview.jpeg" width="400"/></p>
 
 <p align="center"><strong>一行代码的透明状态栏</strong></p>
 
@@ -10,7 +10,7 @@
 | <a href="https://github.com/liangjingkanji/StatusBar/releases/download/2.0.5/StatusBar.apk">下载体验</a>
 </p>
 
-<p align="center"><img src="https://i.imgur.com/bAaaokr.png" width="400"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/liangjingkanji/StatusBar/master/docs/img/code-preview.png" width="350"/></p>
 
 <p align="center">
 <a href="https://jitpack.io/#liangjingkanji/StatusBar"><img src="https://jitpack.io/v/liangjingkanji/StatusBar.svg"/></a>
