@@ -1,38 +1,74 @@
 site_name: StatusBar
-site_author: drake
 site_description: StatusBar document
-copyright: Copyright &copy; 2018 - 2020 劉強東
-
-repo_name: GitHub
 repo_url: https://github.com/liangjingkanji/StatusBar
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/liangjingkanji
+    - icon: fontawesome/brands/qq
+      link: https://raw.githubusercontent.com/liangjingkanji/liangjingkanji/master/img/group-qrcode.png
 
+site_author: 劉強東
+copyright: Copyright &copy; 2018 - 2023 劉強東
+repo_name: GitHub
+docs_dir: 'docs'
 extra_css:
   - css/extra.css
-
-docs_dir: docs
-
 theme:
   name: material
   custom_dir: docs/material
-
+  favicon: img/book-open.svg
+  logo: img/book-open.svg
   palette:
-    scheme: drake
-    primary: white
-
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
   font: false
-
   language: zh
-
+  features:
+    - navigation.top
+    - navigation.prune
+    - navigation.footer
+    - navigation.instant
+    - search.highlight
+    - search.suggest
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+plugins:
+  - offline
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang:
+        - en
+        - zh
 markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.tasklist:
       custom_checkbox: true
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.tabbed
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - def_list
+  - md_in_html
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.details
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 nav:
   - 通用透明状态栏: 'index.md'

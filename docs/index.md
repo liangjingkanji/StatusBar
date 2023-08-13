@@ -5,14 +5,11 @@
 1. 状态栏的文字颜色默认是白色(即亮色模式), 可以设置成黑色(暗色模式)
 
 === "亮色模式"
-    <img src="https://i.imgur.com/n4lPbRt.png" width="50%"/>
-
+    <img src="https://raw.githubusercontent.com/liangjingkanji/StatusBar/master/docs/img/md/light-status.png" width="50%"/>
     ```kotlin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    ```
-
         immersive(toolbar)
     }
     ```
@@ -23,8 +20,6 @@
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    ```
-
         immersive(toolbar, true) // 第二个参数即设置状态栏文字颜色暗色模式
     }
     ```
